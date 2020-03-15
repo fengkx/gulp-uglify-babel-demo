@@ -6,7 +6,9 @@ const babel = require('gulp-babel');
 gulp.task('js', () => {
     return gulp.src('main.js')
     .pipe(babel({
-        presets: ['@babel/preset-env'],
+        presets: [
+            ['@babel/preset-env', { useBuiltIns: 'usage', corejs: 3 }]
+        ],
     }))
     .pipe(uglify())
     .pipe(rename({suffix: '.min'}))
